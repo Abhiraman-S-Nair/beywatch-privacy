@@ -3,52 +3,511 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeyWatch</title>
+
+    <meta name="description"
+          content="BeyWatch — WhatsApp marketplace alerts for Beyblade collectors.">
+
+    <title>BeyWatch — Marketplace Alerts for Beyblade Collectors</title>
+
+    <style>
+        :root {
+            --bg: #08090d;
+            --surface: #11131a;
+            --surface-2: #171a23;
+            --text: #f4f5f7;
+            --muted: #a5a9b5;
+            --accent: #7c5cff;
+            --accent-2: #9b86ff;
+            --border: #292d39;
+            --success: #55d98a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 50% -10%, #24203d 0, transparent 45%),
+                var(--bg);
+            color: var(--text);
+            font-family:
+                Inter, ui-sans-serif, system-ui, -apple-system,
+                BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1100px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        nav {
+            padding: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        nav .links {
+            display: flex;
+            gap: 24px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        nav .links a {
+            text-decoration: none;
+        }
+
+        nav .links a:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 90px 0 110px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--accent-2);
+            background: rgba(124, 92, 255, 0.08);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            max-width: 850px;
+            margin: 0 auto;
+            font-size: clamp(3rem, 7vw, 5.8rem);
+            line-height: 0.98;
+            letter-spacing: -0.055em;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 28px auto 0;
+            color: var(--muted);
+            font-size: 1.15rem;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 34px;
+        }
+
+        .button {
+            padding: 12px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .button.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-heading {
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-size: 2.2rem;
+            margin: 0 0 10px;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: rgba(17, 19, 26, 0.82);
+        }
+
+        .icon {
+            font-size: 1.7rem;
+            margin-bottom: 14px;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .flow-step {
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+        }
+
+        .flow-step strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .flow-step span {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .commands {
+            display: grid;
+            gap: 10px;
+            max-width: 700px;
+        }
+
+        .command {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 15px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        code {
+            color: var(--accent-2);
+            font-family: "SFMono-Regular", Consolas, monospace;
+        }
+
+        .note {
+            margin-top: 24px;
+            padding: 18px;
+            border-left: 3px solid var(--success);
+            background: rgba(85, 217, 138, 0.06);
+            color: var(--muted);
+        }
+
+        .cta {
+            text-align: center;
+            padding: 90px 0;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .cta p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 16px auto 28px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        footer .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 750px) {
+            nav .links {
+                display: none;
+            }
+
+            .grid,
+            .flow {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .command {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>🤖 BeyWatch</h1>
 
-    <h2>WhatsApp Marketplace Alerts for Beyblade Collectors</h2>
+<header class="container">
+    <nav>
+        <a class="brand" href="/">🤖 BeyWatch</a>
 
-    <p>
-        BeyWatch is a community marketplace-alert service designed to
-        help Beyblade collectors discover listings for items they are
-        looking for.
-    </p>
+        <div class="links">
+            <a href="#features">Features</a>
+            <a href="#how">How it works</a>
+            <a href="#commands">Commands</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+    </nav>
+</header>
 
-    <h2>What BeyWatch Does</h2>
+<main>
 
-    <ul>
-        <li>Monitors marketplace messages shared with the service</li>
-        <li>Identifies Beyblade products and accessories</li>
-        <li>Matches listings against user watchlists</li>
-        <li>Sends relevant alerts to interested users</li>
-    </ul>
+    <section class="hero">
+        <div class="container">
+            <div class="eyebrow">BUILT FOR BEYBLADE COLLECTORS</div>
 
-    <h2>What BeyWatch Does Not Do</h2>
+            <h1>
+                Never miss the Bey you're hunting for.
+            </h1>
 
-    <ul>
-        <li>No automatic purchases</li>
-        <li>No automatic bidding</li>
-        <li>No payment processing</li>
-    </ul>
+            <p>
+                BeyWatch watches approved WhatsApp marketplace activity,
+                identifies relevant listings, and privately alerts collectors
+                when something on their watchlist appears.
+            </p>
 
-    <h2>Privacy</h2>
+            <div class="buttons">
+                <a class="button primary" href="#how">
+                    How it works
+                </a>
 
-    <p>
-        BeyWatch processes information only to provide its marketplace
-        alert functionality.
-    </p>
+                <a class="button" href="privacy.html">
+                    Privacy policy
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <p>
-        <a href="privacy.html">View Privacy Policy</a>
-    </p>
+    <section id="features">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Everything you need to watch the market.</h2>
+                <p>
+                    BeyWatch combines deterministic matching, image recognition,
+                    persistent listings, and private alerts.
+                </p>
+            </div>
 
-    <h2>Contact</h2>
+            <div class="grid">
 
-    <p>
-        BeyWatch is currently operated as a community project for
-        Beyblade collectors.
-    </p>
+                <article class="card">
+                    <div class="icon">🔎</div>
+                    <h3>Detect listings</h3>
+                    <p>
+                        Recognizes sale and auction language and extracts
+                        relevant prices and items.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="icon">🧠</div>
+                    <h3>Understand images</h3>
+                    <p>
+                        Uses Gemini vision as a fallback when a marketplace
+                        post needs image-based identification.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="icon">👀</div>
+                    <h3>Watch what matters</h3>
+                    <p>
+                        Maintain a personal watchlist and get notified only
+                        about items you're interested in.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="icon">🔔</div>
+                    <h3>Private alerts</h3>
+                    <p>
+                        Matching listings are delivered privately instead of
+                        cluttering the marketplace conversation.
+                    </p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="how">
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>How it works</h2>
+                <p>
+                    A marketplace post becomes a private notification in a
+                    few simple steps.
+                </p>
+            </div>
+
+            <div class="flow">
+
+                <div class="flow-step">
+                    <strong>01 · Post</strong>
+                    <span>A seller shares a marketplace listing.</span>
+                </div>
+
+                <div class="flow-step">
+                    <strong>02 · Identify</strong>
+                    <span>BeyWatch analyzes text and, when needed, images.</span>
+                </div>
+
+                <div class="flow-step">
+                    <strong>03 · Match</strong>
+                    <span>The listing is compared against active watchlists.</span>
+                </div>
+
+                <div class="flow-step">
+                    <strong>04 · Alert</strong>
+                    <span>Interested collectors receive a private alert.</span>
+                </div>
+
+            </div>
+
+            <div class="note">
+                <strong>Historical matching:</strong>
+                active listings are retained, so starting a watch later can
+                still surface an existing offer.
+            </div>
+
+        </div>
+    </section>
+
+    <section id="commands">
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>Simple commands</h2>
+                <p>
+                    BeyWatch is designed to stay out of the way.
+                </p>
+            </div>
+
+            <div class="commands">
+
+                <div class="command">
+                    <code>/watch Cosmic Pegasus</code>
+                    <span>Start watching</span>
+                </div>
+
+                <div class="command">
+                    <code>/unwatch Cosmic Pegasus</code>
+                    <span>Stop watching</span>
+                </div>
+
+                <div class="command">
+                    <code>/list</code>
+                    <span>View your watchlist</span>
+                </div>
+
+                <div class="command">
+                    <code>/sale</code>
+                    <span>Browse active listings</span>
+                </div>
+
+                <div class="command">
+                    <code>/sold 12</code>
+                    <span>Close your listing</span>
+                </div>
+
+                <div class="command">
+                    <code>/withdraw 12</code>
+                    <span>Withdraw your listing</span>
+                </div>
+
+                <div class="command">
+                    <code>/help</code>
+                    <span>Show available commands</span>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+
+            <h2>Built for collectors.</h2>
+
+            <p>
+                BeyWatch helps you find the listings you care about without
+                automatically buying, bidding, paying, or contacting sellers.
+            </p>
+
+            <div class="buttons">
+                <a class="button primary" href="privacy.html">
+                    Read the privacy policy
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <span>🤖 BeyWatch</span>
+
+        <span>
+            Independent community project ·
+            Not affiliated with Meta, WhatsApp, or Hasbro.
+        </span>
+    </div>
+</footer>
+
 </body>
 </html>
