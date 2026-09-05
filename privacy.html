@@ -3,54 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeyWatch Privacy Policy</title>
+
+    <meta name="description"
+          content="BeyWatch privacy policy.">
+
+    <title>Privacy Policy — BeyWatch</title>
+
+    <style>
+        :root {
+            --bg: #08090d;
+            --surface: #11131a;
+            --text: #f4f5f7;
+            --muted: #a5a9b5;
+            --accent: #9b86ff;
+            --border: #292d39;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family:
+                Inter, ui-sans-serif, system-ui, -apple-system,
+                BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: min(800px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        header {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        main {
+            padding: 70px 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            margin-top: 45px;
+        }
+
+        p,
+        li {
+            color: var(--muted);
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        .updated {
+            color: var(--accent);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>BeyWatch Privacy Policy</h1>
 
-    <p><strong>Last updated:</strong> September 5, 2026</p>
+<header>
+    <div class="container">
+        <a href="index.html">← 🤖 BeyWatch</a>
+    </div>
+</header>
 
-    <h2>About BeyWatch</h2>
-    <p>
-        BeyWatch is a WhatsApp-based marketplace alert bot for a private
-        Beyblade community. It helps users find marketplace listings for
-        items they are interested in.
-    </p>
+<main>
+    <div class="container">
 
-    <h2>Information We Process</h2>
-    <p>
-        BeyWatch may process WhatsApp user identifiers, message content,
-        images attached to marketplace posts, watchlist preferences,
-        and marketplace listing information.
-    </p>
+        <h1>Privacy Policy</h1>
 
-    <h2>How We Use Information</h2>
-    <p>
-        This information is used only to identify marketplace listings,
-        match them against user watchlists, and send relevant alerts.
-    </p>
+        <p class="updated">
+            Last updated: September 5, 2026
+        </p>
 
-    <h2>Payments and Purchases</h2>
-    <p>
-        BeyWatch does not automatically purchase products, place bids,
-        or process payments.
-    </p>
+        <p>
+            BeyWatch is a community marketplace-alert service designed to help
+            Beyblade collectors discover and track relevant marketplace
+            listings through WhatsApp.
+        </p>
 
-    <h2>Data Sharing</h2>
-    <p>
-        We do not sell personal information to third parties.
-    </p>
+        <h2>Information We Process</h2>
 
-    <h2>Data Retention</h2>
-    <p>
-        Marketplace listing and watchlist information may be retained
-        while required to provide the service.
-    </p>
+        <p>
+            BeyWatch may process WhatsApp user identifiers, marketplace
+            message content, images attached to marketplace posts, watchlist
+            preferences, listing information, and alert records.
+        </p>
 
-    <h2>Contact</h2>
-    <p>
-        For questions about this privacy policy, contact the BeyWatch
-        administrator.
-    </p>
+        <h2>How We Use Information</h2>
+
+        <p>
+            Information is processed to identify marketplace listings, match
+            them against user watchlists, maintain active listing records,
+            and send relevant alerts.
+        </p>
+
+        <h2>Marketplace Media</h2>
+
+        <p>
+            Images attached to marketplace messages may be processed when
+            image-based identification is required. Such images may be
+            temporarily or persistently stored by the service depending on
+            the deployment configuration.
+        </p>
+
+        <h2>Payments and Purchases</h2>
+
+        <p>
+            BeyWatch does not automatically purchase products, place bids,
+            process payments, or contact sellers on a user's behalf.
+        </p>
+
+        <h2>Data Sharing</h2>
+
+        <p>
+            BeyWatch does not sell personal information to third parties.
+            External service providers may process information when required
+            to provide functionality, such as the Meta WhatsApp Cloud API or
+            image-analysis services.
+        </p>
+
+        <h2>Data Retention</h2>
+
+        <p>
+            The current implementation may retain marketplace listing data,
+            message text, identifiers, alert records, and media while needed
+            by the service. The current prototype does not yet provide
+            configurable retention periods or user-facing deletion controls.
+        </p>
+
+        <h2>Security</h2>
+
+        <p>
+            BeyWatch uses environment-based secrets and validates Meta
+            webhook signatures. Production deployments should additionally
+            use appropriate access controls, secure hosting, data retention
+            policies, and protection for stored media and databases.
+        </p>
+
+        <h2>Contact</h2>
+
+        <p>
+            For questions about BeyWatch or this privacy policy, contact the
+            BeyWatch project administrator.
+        </p>
+
+        <h2>Independent Project</h2>
+
+        <p>
+            BeyWatch is an independent community project and is not affiliated
+            with Meta, WhatsApp, or Hasbro.
+        </p>
+
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        🤖 BeyWatch
+    </div>
+</footer>
+
 </body>
 </html>
